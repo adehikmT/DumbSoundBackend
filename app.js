@@ -12,7 +12,7 @@ const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ limit: "50mb", extended: false }));
 app.use(bodyParser.json());
 
-app.use(morgan("dev"));
+// app.use(morgan("dev"));
 
 app.use(express.static(public));
 
