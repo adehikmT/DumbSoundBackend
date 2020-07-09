@@ -19,7 +19,7 @@ app.use(express.static(public));
 const routeNavigator = require("./src");
 app.use("/api/v1/", routeNavigator);
 
-const server = app.listen(5000, "127.0.0.1", () => {
+const server = app.listen(5000, () => {
   const port = server.address().port;
   const host = server.address().address;
   console.log("server run in " + host + ":" + port);
