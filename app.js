@@ -14,6 +14,8 @@ app.use(bodyParser.json());
 
 // app.use(morgan("dev"));
 
+console.log(dotenv);
+
 app.use(express.static(public));
 
 const routeNavigator = require("./src");
