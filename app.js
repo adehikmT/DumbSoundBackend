@@ -19,8 +19,4 @@ app.use(express.static(public));
 const routeNavigator = require("./src");
 app.use("/api/v1/", routeNavigator);
 
-const server = app.listen(5000, () => {
-  const port = server.address().port;
-  const host = server.address().address;
-  console.log("server run in " + host + ":" + port);
-});
+app.listen(process.env.PORT || 3000, () => console.log("Server is running..."));
