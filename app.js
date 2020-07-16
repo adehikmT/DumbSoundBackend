@@ -1,7 +1,7 @@
 let path = require("path");
 const express = require("express");
 const dotenv = require("dotenv");
-// dotenv.config();
+dotenv.config();
 console.log(process.env);
 // const morgan = require("morgan");
 const app = express();
