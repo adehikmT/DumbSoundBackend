@@ -28,7 +28,8 @@ module.exports = {
       const validPass = await bcrypt.compare(password, User.password);
       if (!validPass) return response(res, 409, 0, "wrong password");
       const token = jwt.sign({ id: User.id }, process.env.API_KEY);
-      return response(res, 200, 1, { email, token ,role:User.listAs});
+      console.log(token);
+      return response(res, 200, 1, { email, token, role: User.listAs });
     } catch (err) {
       return response(res, 500, 0, err);
     }
