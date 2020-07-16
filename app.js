@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 
 // app.use(morgan("dev"));
 
-console.log(dotenv);
+console.log(dotenv.config());
 
 app.use(express.static(public));
 
