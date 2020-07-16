@@ -1,7 +1,8 @@
 let path = require("path");
 const express = require("express");
 const dotenv = require("dotenv");
-dotenv.config();
+// dotenv.config();
+console.log(dotenv.config());
 // const morgan = require("morgan");
 const app = express();
 const public = path.join(__dirname, "public");
@@ -13,8 +14,6 @@ app.use(bodyParser.urlencoded({ limit: "50mb", extended: false }));
 app.use(bodyParser.json());
 
 // app.use(morgan("dev"));
-
-console.log(dotenv.config());
 
 app.use(express.static(public));
 
