@@ -3,6 +3,8 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const response = require("../helpers/response");
 
+const API_KEY="apikeyforfinaltaks";
+
 module.exports = {
   register: async (req, res) => {
     try {
@@ -12,7 +14,7 @@ module.exports = {
       });
       if (User) return response(res, 409, 0, "Email already exists");
       const userCreated = await user.create(req.body);
-      const token = jwt.sign({ id: userCreated.id }, process.env.API_KEY);
+      const token = jwt.sign({ id: userCreated.id }, API_KEY);
       return response(res, 200, 1, { email, token });
     } catch (err) {
       return response(res, 500, 0, err);
@@ -27,9 +29,7 @@ module.exports = {
       if (!User) return response(res, 409, 0, "wrong email");
       const validPass = await bcrypt.compare(password, User.password);
       if (!validPass) return response(res, 409, 0, "wrong password");
-      // const token = await jwt.sign({ id: User.id }, process.env.API_KEY);
-      let token="yyyyy"
-      console.log({env:process.env.API_KEY,id:User.id});
+      const token = jwt.sign({ id: User.id }, API_KEY);
       return response(res, 200, 1, { email, token, role: User.listAs });
     } catch (err) {
       return response(res, 500, 0, err);

@@ -2,13 +2,15 @@ const jwt = require("jsonwebtoken");
 const { user } = require("../models");
 const response = require("../helpers/response");
 
+const API_KEY="apikeyforfinaltaks";
+
 module.exports = {
   authToken: async (req, res, next) => {
     try {
       const authHeader = req.headers.authorization;
       if (authHeader) {
         token = authHeader.split(" ")[1];
-        const verified = jwt.verify(token, process.env.API_KEY);
+        const verified = jwt.verify(token, API_KEY);
         req.user = verified;
         next();
       } else {
