@@ -2,7 +2,7 @@ let path = require("path");
 const express = require("express");
 const dotenv = require("dotenv");
 // dotenv.config();
-console.log(dotenv.config());
+console.log(dotenv.config({ path: '../' }));
 // const morgan = require("morgan");
 const app = express();
 const public = path.join(__dirname, "public");
